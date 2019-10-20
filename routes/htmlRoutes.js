@@ -13,7 +13,7 @@ module.exports = function(app) {
 
   // This is for the link to the css file.
   app.get("/styles", function(req, res) {
-    res.sendFile(path.join(__dirname, "../css/styles.css"));
+    res.sendFile(path.join(__dirname, "../public/css/styles.css"));
   });
 
   // If no matching route is found default to home
