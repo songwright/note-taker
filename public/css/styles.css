@@ -33,6 +33,10 @@ html, body {
   cursor: pointer;
 }
 
+.jumbotron {
+  text-align: center;
+}
+
 .note-journal, .note-textarea, .note-title, .note-text {
   color: #000000;
   width: 100%;
