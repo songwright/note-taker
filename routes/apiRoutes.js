@@ -12,25 +12,26 @@ module.exports = function (app) {
   // API POST request
   app.post("/api/journals", function (req, res) {
     journalData.push(req.body);
-    res.json("saved")
+    res.json("saved");
   });
 
+  // API DELETE request
+  // Cycle through the request array and push the
+  // elements there into a new array, except for
+  // the one with the index of the journal that's
+  // being deleted, then make journalData equal
+  // to the new array.
   app.delete("/api/journals/:index", function (req, res) {
-    var elem = parseInt(req.params.index)
-    var tempjournal = []
+    var elem = parseInt(req.params.index);
+    var tempjournal = [];
     for (var i = 0; i < journalData.length; i++) {
       if (i !== elem) {
-        tempjournal.push(journalData[i])
+        tempjournal.push(journalData[i]);
       }
     }
-    journalData = tempjournal
+    journalData = tempjournal;
 
-    //
-    //  let newarray = journalData(note => {return note.textTitle !== req.body})
-    //   journalData = newarry
-    // elimate the elemn with the index in the array
-    res.json("delete done")
-    // re writte the file  fs.write
+    res.json("delete done");
   });
 
 
