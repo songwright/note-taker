@@ -22,10 +22,10 @@
       </div>
       <ul class="nav navbar-nav navbar-right icons">
         <li class="save-note">
-            <i class="fas fa-save"></i>
+          <i class="fas fa-save"></i>
         </li>
         <li>
-            <i class="fas fa-edit"></i>
+          <i class="fas fa-edit"></i>
         </li>
       </ul>
     </div>
@@ -59,16 +59,25 @@
           listGroup.empty();
           for (i = 0; i < data.length; i++) {
             //This refers to the element where the journals will appear.
-            let trash = $(`<i class="fas fa-trash-alt delete" index=${i}></i>`);
 
+            let trash = $(`<i class="fas fa-trash-alt delete" index=${i}></i>`);
             listGroup.append(
-              $("<li>").attr("class", "list-group-item").text(data[i].title).append(trash),
-              // $("<>").text(data[i].body),
-              // $("<>").text(data[i].journal),
-              // $(`<button class="delete" title=${data[i].title} index=${i}>DELETE</button>`)
-              // $(`<i class="fas fa-trash-alt delete" index=${i}></i>`)
+              $("<li>").attr("class", "list-group-item").attr("index", i).text(data[i].title).append(trash),
             )
           }
+          // Display journal function
+          $(".list-group-item").on("click", function () {
+            let index = $(this).attr("index");
+            $.get("api/journals", function (data) {
+              const {title} = data[index];
+              const {body} = data[index];
+              const {journal} = data[index];
+              $(".note-title").val(title);
+              $(".note-text").val(body);
+              $(".note-journal").val(journal);
+            })
+          })
+          // Delete function
           $(".delete").on("click", function () {
             console.log("DELETE");
             var index = $(this).attr("index");
@@ -78,7 +87,7 @@
               method: "DELETE"
             }).then(function (response) {
               console.log("come back from delete", response);
-             getJournals();
+              getJournals();
             });
           });
         }
@@ -97,7 +106,7 @@
       console.log("journal object: ", journal)
       $.post("api/journals", journal, function (data) {
         // reloading the page
-      }).then(function(response){
+      }).then(function (response) {
         getJournals()
       })
     });
