@@ -1,20 +1,20 @@
 // Store the data in an array.
 var journalArray = [
-  {
-    title: "tests",
-    body: "asfdfsd",
-    journal: "food"
-  },
-  {
-    title: "lskfjsdlk",
-    body: "sdjlfkjdsklf",
-    journal: "excercise"
-  },
-  {
-    title: "ouch",
-    body: "dude",
-    journal: "food"
-  }
+  // {
+  //   title: "tests-1",
+  //   body: "asfdfsd",
+  //   journal: "food"
+  // },
+  // {
+  //   title: "test-2",
+  //   body: "sdjlfkjdsklf",
+  //   journal: "excercise"
+  // },
+  // {
+  //   title: "test-3",
+  //   body: "dude",
+  //   journal: "food"
+  // }
 ];
 
 // Make the array accessible to other files using require.
