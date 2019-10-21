@@ -24,7 +24,7 @@
         <li class="save-note">
           <i class="fas fa-save"></i>
         </li>
-        <li>
+        <li class="clear-note">
           <i class="fas fa-edit"></i>
         </li>
       </ul>
@@ -94,7 +94,7 @@
       })
     }
 
-
+    // Save note function
     $(".save-note").on("click", function () {
       console.log("click")
       let journal = {
@@ -111,6 +111,12 @@
       })
     });
 
+    // Clear note function
+    $(".clear-note").on("click", function() {
+      $(".note-title").val('');
+      $(".note-text").val('');
+      $(".note-journal").val('');
+    })
 
     getJournals();
   </script>
