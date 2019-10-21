@@ -53,7 +53,6 @@
     // Get journal data from the server.
     function getJournals() {
       $.get("api/journals", function (data) {
-        console.log("come back from GET:", data)
         if (data) {
           let listGroup = $(".list-group");
           listGroup.empty();
@@ -79,14 +78,11 @@
           })
           // Delete function
           $(".delete").on("click", function () {
-            console.log("DELETE");
             var index = $(this).attr("index");
-            console.log(index);
             $.ajax({
               url: "api/journals/" + index,
               method: "DELETE"
             }).then(function (response) {
-              console.log("come back from delete", response);
               getJournals();
             });
           });
@@ -96,14 +92,12 @@
 
     // Save note function
     $(".save-note").on("click", function () {
-      console.log("click")
       let journal = {
         title: $(".note-title").val(),
         body: $(".note-text").val(),
         journal: $(".note-journal").val(),
 
       }
-      console.log("journal object: ", journal)
       $.post("api/journals", journal, function (data) {
         // reloading the page
       }).then(function (response) {
