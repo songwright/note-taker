@@ -21,24 +21,27 @@
         </a>
       </div>
       <ul class="nav navbar-nav navbar-right">
-        <li class="glyphicon glyphicon-user save-note">Save</li>
-        <li><span class="glyphicon glyphicon-log-in"></span> Write</li>
+        <li class="save-note">Save</li>
+        <li><Write</li>
       </ul>
     </div>
   </nav>
   <div class="row">
     <div class="col-4">
       <div class="list-container">
-        <div class="list-group">
+        <div class="card">
+          <ul class="list-group">
 
-
+          </ul>
         </div>
       </div>
     </div>
     <div class="col-8">
-      <input class="note-title" type="text">
-      <textarea class="note-textarea"></textarea>
-      <input class="note-journal" type="text">
+      <div class="note-textarea">
+        <input class="note-title" placeholder="Note Title" type="text">
+        <textarea class="note-text" placeholder="Note Text"></textarea>
+        <input class="note-journal" placeholder="Journal category" type="text">
+      </div>
     </div>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -52,12 +55,14 @@
           listGroup.empty();
           for (i = 0; i < data.length; i++) {
             //This refers to the element where the journals will appear.
+            let trash = $(`<i class="fas fa-trash-alt delete" index=${i}></i>`);
 
             listGroup.append(
-              $("<h3>").text(data[i].title),
-              $("<h4>").text(data[i].body),
-              $("<h4>").text(data[i].journal),
-              $(`<button class="delete" title=${data[i].title} index=${i}>DELETE</button>`)
+              $("<li>").attr("class", "list-group-item").text(data[i].title).append(trash),
+              // $("<>").text(data[i].body),
+              // $("<>").text(data[i].journal),
+              // $(`<button class="delete" title=${data[i].title} index=${i}>DELETE</button>`)
+              // $(`<i class="fas fa-trash-alt delete" index=${i}></i>`)
             )
           }
           $(".delete").on("click", function () {
@@ -68,7 +73,7 @@
               url: "api/journals/" + index,
               method: "DELETE"
             }).then(function (response) {
-              console.log("com back from delete", response);
+              console.log("come back from delete", response);
              getJournals();
             });
           });
@@ -81,7 +86,7 @@
       console.log("click")
       let journal = {
         title: $(".note-title").val(),
-        body: $(".note-textarea").val(),
+        body: $(".note-text").val(),
         journal: $(".note-journal").val(),
 
       }
