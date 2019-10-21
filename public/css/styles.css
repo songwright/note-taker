@@ -8,8 +8,17 @@ html, body {
   padding: 0;
 }
 
+.container-fluid {
+  padding: 0;
+}
+
 .navbar-header h4{
+  padding: 0;
   color: white;
+}
+
+.navbar-nav {
+  flex-direction: row;
 }
 
 .save-note {
