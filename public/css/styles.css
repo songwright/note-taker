@@ -13,7 +13,8 @@ html, body {
 }
 
 .save-note {
-  display: none;
+  /* display: none; */
+  color: black;
 }
 
 .icons i {
@@ -34,6 +35,11 @@ html, body {
   resize: none;
   height: calc(100% - 63px);
   padding-top: 15px;
+}
+
+.note-journal {
+  resize: none;
+  /* padding-top: 15px; */
 }
 
 .note-title {
